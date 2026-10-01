@@ -387,7 +387,9 @@ $('aiAnalyzeButton').addEventListener('click', async () => {
       method: 'POST', headers: { 'content-type': 'application/json' }, signal: AbortSignal.timeout(30000),
       body: JSON.stringify({ pm: state.pm, voc: state.voc, co: state.co, temp: state.temp, humidity: state.humidity, score: state.score, source: state.demo ? 'simulation' : 'sensor', history: state.history.slice(-30).map(row => row.pm) })
     });
-    const data = await response.json();
+    // GitHub Pages 같은 정적 호스팅에는 분석 서버가 없어 JSON이 아닌 응답이 온다.
+    const data = await response.json().catch(() => null);
+    if (!data) throw new Error('이 주소에는 AI 분석 서버가 없습니다. PC에서 npm start로 실행한 화면에서 사용하세요.');
     if (!response.ok) throw new Error(data.error || '분석에 실패했습니다.');
     if (revision !== state.revision) return;
     state.apiInsight = data.insight; state.apiExpires = Date.now() + 30000;

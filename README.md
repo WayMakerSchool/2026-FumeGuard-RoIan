@@ -2,6 +2,14 @@
 
 인터넷 없이 ESP32와 BLE로 직접 연결하는 조리흄 실시간 모니터링 데모입니다.
 
+## 배포 페이지
+
+https://waymakerschool.github.io/2026-FumeGuard-RoIan/
+
+- 설치 없이 시연 모드, 위험 상황 시연, 에어커튼 바람 제어 화면을 볼 수 있습니다.
+- HTTPS라서 Android Chrome과 데스크톱 Chrome에서 `센서 연결`(Web Bluetooth)도 사용할 수 있습니다.
+- 정적 페이지라 서버가 필요한 `AI 정밀 분석`은 동작하지 않습니다. 아래처럼 PC에서 실행해야 합니다.
+
 ## 실행
 
 ```bash
